@@ -271,11 +271,11 @@ internal interface FluwxShareHandler : CoroutineScope {
         return thumbnailMap?.run {
             val thumbnailImage = WeChatFile.createWeChatFile(thumbnailMap, assetFileDescriptor)
             val thumbnailImageIO = ImagesIOIml(thumbnailImage)
-            if(compress){
+            /*if(compress){
                 compressThumbnail(thumbnailImageIO, length)
-            }else{
-                thumbnailImageIO.readByteArray()
-            }
+            }else{*/
+            thumbnailImageIO.readByteArray()
+            //}
         }
     }
 

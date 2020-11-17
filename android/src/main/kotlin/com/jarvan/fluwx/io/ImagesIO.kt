@@ -18,11 +18,13 @@ import kotlin.math.sqrt
  * 冷风如刀，以大地为砧板，视众生为鱼肉。
  * 万里飞雪，将穹苍作烘炉，熔万物为白银。
  **/
-class ImagesIOIml(override val image: WeChatFile) : ImagesIO {
+//class ImagesIOIml(override val image: WeChatFile) : ImagesIO {
+class ImagesIOIml(val image: WeChatFile) {
 
-    override suspend fun readByteArray(): ByteArray = image.readByteArray()
+    //override suspend fun readByteArray(): ByteArray = image.readByteArray()
+    suspend fun readByteArray(): ByteArray = image.readByteArray()
 
-    override suspend fun compressedByteArray(context: Context, maxSize: Int): ByteArray = withContext(Dispatchers.IO) {
+    /*override suspend fun compressedByteArray(context: Context, maxSize: Int): ByteArray = withContext(Dispatchers.IO) {
         val originalByteArray = readByteArray()
         if (originalByteArray.isEmpty())
             return@withContext originalByteArray
@@ -44,8 +46,8 @@ class ImagesIOIml(override val image: WeChatFile) : ImagesIO {
         } else {
             createScaledBitmapWithRatio(compressedFile, maxSize)
         }
-    }
-
+    }*/
+    
     private fun inputStreamToFile(inputStream: InputStream): File {
         val file = File.createTempFile(UUID.randomUUID().toString(), image.suffix)
 
